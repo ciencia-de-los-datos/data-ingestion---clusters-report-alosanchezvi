@@ -43,6 +43,7 @@ def ingest_data():
     nombre_columnas[1]=nombre_columnas[1]+' palabras clave'
     nombre_columnas[2]=nombre_columnas[2]+' palabras clave'
     nombre_columnas=[i.lower().strip().replace(' ','_') for i in nombre_columnas]
+    pattern = r'(\d+)\s+(\d+)\s+([\d,]+\s%\s+)\s+(.*\s*)'
     df=pd.DataFrame(contenido001,columns=nombre_columnas)
     #
 
