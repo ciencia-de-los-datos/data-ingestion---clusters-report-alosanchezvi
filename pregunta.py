@@ -34,6 +34,7 @@ def ingest_data():
 
     contenido=[]
     for i in (lista_concat):
+        pattern = r'(\d+)\s+(\d+)\s+([\d,]+\s%\s+)\s+(.*\s*)'
         contenido.append(re.findall(pattern, i))
     contenido001=[list(cont[0]) for cont in  contenido]
     for cont in range(len(contenido001)):
@@ -43,7 +44,7 @@ def ingest_data():
     nombre_columnas[1]=nombre_columnas[1]+' palabras clave'
     nombre_columnas[2]=nombre_columnas[2]+' palabras clave'
     nombre_columnas=[i.lower().strip().replace(' ','_') for i in nombre_columnas]
-    pattern = r'(\d+)\s+(\d+)\s+([\d,]+\s%\s+)\s+(.*\s*)'
+    
     df=pd.DataFrame(contenido001,columns=nombre_columnas)
     #
 
