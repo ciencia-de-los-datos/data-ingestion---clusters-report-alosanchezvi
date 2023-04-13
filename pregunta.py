@@ -29,7 +29,7 @@ def ingest_data():
             indices_numeros.append(i)
 
     lista_concat=[]    
-    for a,b in zip(indices_numeros, indices_numeros[1:]):
+    for a,b in zip(indices_numeros, indices_numeros[1:]+[100]):
         lista_concat.append(' '.join(lineas[a:b]))
 
     contenido=[]
@@ -46,6 +46,10 @@ def ingest_data():
     nombre_columnas=[i.lower().strip().replace(' ','_') for i in nombre_columnas]
     
     df=pd.DataFrame(contenido001,columns=nombre_columnas)
+    df['cluster']=df.cluster.astype('int')
+    df['cantidad_de_palabras_clave']=df.cantidad_de_palabras_clave.astype('int')
+    df['porcentaje_de_palabras_clave']=df['porcentaje_de_palabras_clave'].str.replace('%', '').str.replace(',', '.').astype(float)
+    df['principales_palabras_clave']=df['principales_palabras_clave'].astype(str).str.replace('.','')
     #
 
     return df
