@@ -10,6 +10,8 @@ espacio entre palabra y palabra.
 
 """
 import pandas as pd
+import numpy as np
+import re
 
 
 def ingest_data():
